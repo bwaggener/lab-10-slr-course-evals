@@ -1,4 +1,4 @@
-Lab 10 - Grading the professor, Pt. 1
+Lab 09 - Grading the professor, Pt. 1
 ================
 Insert your name here
 Insert date here
