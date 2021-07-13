@@ -25,3 +25,6 @@ Do not use spaces in code chunk labels.
 ...
 
 Add exercise headings as needed.
+
+## 
+For Exercise 12, relevel() function can be helpful! 
