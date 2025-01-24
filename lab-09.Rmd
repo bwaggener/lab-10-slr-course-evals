@@ -18,7 +18,6 @@ library(openintro)
 Remove this text, and add your answer for Exercise 1 here.
 Add code chunks as needed.
 Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
 
 ### Exercise 2
 
@@ -26,5 +25,5 @@ Do not use spaces in code chunk labels.
 
 Add exercise headings as needed.
 
-## 
+### Hint 
 For Exercise 12, relevel() function can be helpful! 
