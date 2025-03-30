@@ -1,3 +1,3 @@
-# lab-09-slr-course-evals
+# lab-10-slr-course-evals
 
 materials for lab

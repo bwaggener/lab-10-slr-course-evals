@@ -1,5 +1,5 @@
 ---
-title: "Lab 09 - Grading the professor, Pt. 1"
+title: "Lab 10 - Grading the professor, Pt. 1"
 author: "Insert your name here"
 date: "Insert date here"
 output: github_document
