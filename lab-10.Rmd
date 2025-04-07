@@ -11,6 +11,10 @@ output: github_document
 library(tidyverse) 
 library(tidymodels)
 library(openintro)
+library(broom)
+library(viridis)
+library(ggplot2)
+
 ```
 
 ## Exercise 1
@@ -21,9 +25,67 @@ Add code chunks as needed. Don't forget to label your code chunks.
 
 ```{r exercise1_code}
 # Add your R code here
+
+data("evals")
+view(evals)
+
+evals$prof_id <- as.factor(evals$prof_id)
+
 ```
 
+```{r plot}
+ggplot(evals, aes(x = reorder(course_id, score), y = score)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Bar Chart of Score by Course (Ordered by Score)",
+    x = "Evaluations Ordered From Lowest to Highest",
+    y = "Attractiveness Score")+
+  theme_classic() +
+  theme(axis.text.x = element_blank(),   # Remove x-axis labels
+    axis.ticks.x = element_blank())
+  
+```
+
+Yes the distribution appears to be skewed such that there is a positive skew. Most professors recieved a positive score (above 3).
+
+This mostly fits what I would expect. Most professors get pretty good scores but their ratings seem to drop more sharply below a rating of 3--likely because if they are notably bad, students are more likely to agree that they are that bad.
+
 ## Exercise 2
+
+"Create a scatterplot of score versus bty_avg (a professor’s average beauty rating). Describe any pattern you observe—does there appear to be a trend, clustering, or wide variation? Don’t overthink it; just describe what you see."
+
+```{r scatterplot}
+ggplot(evals, aes(x = bty_avg, y = score)) +
+  geom_point() +
+  labs(
+    title = "Scatterplot of Score vs. Beauty Average",
+    x = "Beauty Average",
+    y = "Score") +
+  theme_classic()
+```
+It seems that beauty does correlate with evaluation scores, especially when you look at the lower scores. It seems that if a professor is more attractive, they are less likely to recieve a lower score. Beauty does not seem to effect higher scores (ceiling effect?).
+
+##Exercise 3
+
+```{r jitter}
+ggplot(evals, aes(x = bty_avg, y = score)) +
+  geom_jitter() +
+  labs(
+    title = "Scatterplot of Score vs. Beauty Average",
+    x = "Beauty Average",
+    y = "Score") +
+  theme_classic()
+```
+This reveals all the clusters that were obscured in the previous graph because the points were stacked on one another. I don't think this changes too much about the interpretation however, it visually emphasized the correlation I described earlier.
+
+##Exercise 4
+"Let’s see if the apparent trend in the plot is something more than natural variation. Fit a linear model called m_bty to predict average professor evaluation score by average beauty rating (bty_avg). Based on the regression output, write the linear model."
+
+```{r regression}
+m_bty <- lm(score ~ bty_avg, data = evals)
+summary(m_bty)
+```
+The linear model is: score = 3.88 + b0.067
 
 *Provide your answer here.*  
 Add code chunks as needed.
