@@ -140,7 +140,30 @@ score = 4.28 + -.13(tenure track) + -.15(tenured)
 when accounting for the rank of professor, being on tenure track decreases the score by .13 and being tenured decreases the score by .15. This means that the average score of a tenure track professor is 4.15 and the average score of a tenured professor is 4.13. If they are simply teaching, that is represetned by the intercept so their score would be 4.28--on average.
 
 ##Exercise 12
+"Create a new variable called rank_relevel where "tenure track" is the baseline level."
 
+```{r relevel}
+
+ evals <- evals %>%
+  mutate(rank_relevel = relevel(rank, ref = "tenure track"))
+
+m_rank_releveled<- lm(score ~ rank_relevel, data = evals)
+tidy(m_rank)
+
+summary(m_rank_releveled)
+
+```
+
+##Exercise 13
+
+The linear model is score = 4.116 + .13(teaching) + -.016(tenured)
+
+This means that teaching increases professors scores by .13 and being tenured decreases their scores by .016 while tenure track is the reference and the average is 4.12.
+
+multiple r^2 = .012 adjusted = .0073
+this means taht this model accountsfor 1.2% of the varience in evaluation scores.
+
+##Exercise 14
 
 
 *Provide your answer here.*  
