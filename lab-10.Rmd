@@ -85,7 +85,63 @@ This reveals all the clusters that were obscured in the previous graph because t
 m_bty <- lm(score ~ bty_avg, data = evals)
 summary(m_bty)
 ```
-The linear model is: score = 3.88 + b0.067
+The linear model is: score = 3.88 + 0.067*x
+
+##Exercise 5
+"Replot your visualization from Exercise 3, this time add a regression line in orange. Turn off the default shading around the line. By default, the plot includes shading around the line—what does that shading represent? And speculate why I’m asking you to turn it off."
+
+The line represents the 95% CI around the regression line. Turning it off simplifies the graph and makes it easier to read.
+
+```{r ex5}
+ggplot(evals, aes(x = bty_avg, y = score)) +
+  geom_jitter() +
+  labs(
+    title = "Scatterplot of Score vs. Beauty Average",
+    x = "Beauty Average",
+    y = "Score") +
+  geom_smooth(method = "lm",
+             color = "orange",
+             se = FALSE)+
+  theme_classic()
+```
+
+
+## Exercise 6
+The slope of this model indicates that professor evaluations are more positive as beauty average increase.
+
+##Exercise 7
+The intercept represents the theoretical evaluation score of a professor with a beauty rating of 0. This is more of a mathematical artifact than actually meaningful because no professor got a score lower than 1.67.
+
+##Exercise 8
+R^2 is .033 which means that beauty explains 3.3% of the variance in professor evaluations.
+
+
+##Exercise 9
+```{r ex9_lm}
+m_gen <- lm(score ~ gender, data = evals)
+tidy(m_gen)
+
+summary(m_gen)
+```
+
+The reference level is female. This means that we can interpret the estimate as the effect on scores as a result of being male compared to female. Being male has a .14 increase.
+
+##Exercise 10
+the equation is score = 4.09 + .14*x and for males this is score = 4.23 and for females score = 4.09.
+
+##Exercise 11
+
+```{r rank}
+m_rank <- lm(score ~ rank, data = evals)
+tidy(m_rank)
+```
+
+score = 4.28 + -.13(tenure track) + -.15(tenured)
+when accounting for the rank of professor, being on tenure track decreases the score by .13 and being tenured decreases the score by .15. This means that the average score of a tenure track professor is 4.15 and the average score of a tenured professor is 4.13. If they are simply teaching, that is represetned by the intercept so their score would be 4.28--on average.
+
+##Exercise 12
+
+
 
 *Provide your answer here.*  
 Add code chunks as needed.
