@@ -1,7 +1,7 @@
 ins---
 title: "Lab 10 - Grading the professor, Pt. 1"
 author: "Insert your name here"
-date: "Insert date here"
+date: "4/11/2025"
 output: github_document
 ---
 
@@ -161,7 +161,7 @@ The linear model is score = 4.116 + .13(teaching) + -.016(tenured)
 This means that teaching increases professors scores by .13 and being tenured decreases their scores by .016 while tenure track is the reference and the average is 4.12.
 
 multiple r^2 = .012 adjusted = .0073
-this means taht this model accountsfor 1.2% of the varience in evaluation scores.
+this means that this model accounts for 1.2% of the variance in evaluation scores.
 
 ##Exercise 14
 "Create another new variable called tenure_eligible that labels "teaching" faculty as "no" and labels "tenure track" and "tenured" faculty as "yes"."
